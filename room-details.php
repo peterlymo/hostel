@@ -46,7 +46,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-12"></br>
 						<h2 class="page-title">Rooms Details</h2>
 						<div class="panel panel-default">
 							<div class="panel-heading">All Room Details</div>
@@ -175,6 +175,16 @@ echo $dr*$fpm;
 
 </td>
 </tr>
+
+<tr>
+<td colspan="4"><h4>Booking Status : </h4></td>
+<td colspan="2"><button type="button" class="btn btn-danger"> Booking is currently Pending         </button></td>
+</tr>
+
+<tr>
+
+</tr>
+
 
 
 <?php

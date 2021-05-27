@@ -88,7 +88,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 									</tfoot>
 									<tbody>
 <?php	
-$aid=$_SESSION['id'];
+$aid=$_SESSION['login'];
 $ret="select * from registration";
 $stmt= $mysqli->prepare($ret) ;
 //$stmt->bind_param('i',$aid);
@@ -106,7 +106,7 @@ while($row=$res->fetch_object())
 <td><?php echo $row->seater;?></td>
 <td><?php echo $row->stayfrom;?></td>
 <td>
-<a href="javascript:void(0);"  onClick="popUpWindow('http://localhost/hostel/admin/full-profile.php?id=<?php echo $row->id;?>');" title="View Full Details"><i class="fa fa-desktop"></i></a>&nbsp;&nbsp;
+<a href="javascript:void(0);"  onClick="popUpWindow('http://localhost/hostel/admin/full-profile.php?id=<?php echo $row->emailid;?>');" title="View Full Details"><i class="fa fa-desktop"></i></a>&nbsp;&nbsp;
 <a href="manage-students.php?del=<?php echo $row->id;?>" title="Delete Record" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
 										</tr>
 									<?php

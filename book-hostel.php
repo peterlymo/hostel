@@ -162,7 +162,7 @@ while($row=$res->fetch_object())
 <label class="col-sm-2 control-label">Food Status</label>
 <div class="col-sm-8">
 <input type="radio" value="0" name="foodstatus" checked="checked"> Without Food
-<input type="radio" value="1" name="foodstatus"> With Food(Rs 2000.00 Per Month Extra)
+<input type="radio" value="1" name="foodstatus"> With Food(Tsh 90000.00 Per Month Extra)
 </div>
 </div>	
 
