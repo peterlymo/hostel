@@ -42,7 +42,7 @@ $chngpwd1->bind_param('ssi',$np,$udate,$ai);
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	<title>Change Password</title>
+	<title>Pay Room</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">>
@@ -110,7 +110,7 @@ function gen(){
     }
     
     $x = gen();
-    echo "Thanks your Control number is $x",PHP_EOL;
+    echo "<h2>Thanks your Control number is <b>$x</b></h2>",PHP_EOL;
 
 
 }
@@ -120,17 +120,70 @@ function gen(){
 
 
 
-											
-
-
-
-
 
 							</div>
+
+
+
+                            
 							</div>
-						
-									
-							
+                            <table id="zctb" class="table table-bordered " cellspacing="0" width="100%">
+                            <tbody>
+<?php	
+$aid=$_SESSION['login'];
+	$ret="select * from registration where emailid=?";
+$stmt= $mysqli->prepare($ret) ;
+$stmt->bind_param('s',$aid);
+$stmt->execute() ;
+$res=$stmt->get_result();
+$cnt=1;
+while($row=$res->fetch_object())
+	  {
+	  	?>
+
+<tr>
+<td colspan="4"><h4>Room Realted Info</h4></td>
+</tr>
+
+
+
+<tr>
+<td><b>Room no :</b></td>
+<td><?php echo $row->roomno;?></td>
+<td><b>Seater :</b></td>
+<td><?php echo $row->seater;?></td>
+<td><b>Fees PM :</b></td>
+<td><?php echo $fpm=$row->feespm;?></td>
+</tr>
+
+<tr>
+<td colspan="6"><h4></h4></td>
+</tr>
+
+
+<?php
+
+} ?>
+</tbody>	
+
+
+</table>
+<div class="form-group"></br>
+<label class="col-sm-2 control-label">Enter reference Number : </label>
+<div class="col-sm-8">
+<input type="text" name="pincode" id="pincode" placeholder="enter reference number here"  class="form-control" required="required">
+</br>
+
+<div class="col-sm-6 col-sm-offset-4">	
+													<input type="submit" name="changepwd" Value="Submit Now" class="btn btn-primary">
+                                                    </br>    </br> 
+											</div>
+                                        
+</div>
+</div>	
+
+
+                                       
 
 							</div>
 						</div>

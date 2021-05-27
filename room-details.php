@@ -188,7 +188,7 @@ echo $dr*$fpm;
 
 
 <?php
-$cnt=$cnt+1;
+//$cnt=$cnt+1;
 } ?>
 </tbody>
 </table>
