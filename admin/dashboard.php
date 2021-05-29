@@ -105,6 +105,46 @@ $stmt2->close();
 										</div>
 									</div>
 
+
+
+									<div class="panel panel-default">
+											<div class="panel-body bk-success text-light">
+												<div class="stat-panel text-center">
+<?php
+$result3 ="SELECT count(*) FROM payment where status is null ";
+$stmt1 = $mysqli->prepare($result3);
+$stmt1->execute();
+$stmt1->bind_result($count3);
+$stmt1->fetch();
+$stmt1->close();
+?>
+													<div class="stat-panel-number h1 "><?php echo $count3;?></div>
+													<div class="stat-panel-title text-uppercase">Total Booking </div>
+												</div>
+											</div>
+											<a href="pending.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="panel panel-default">
+											<div class="panel-body bk-info text-light">
+												<div class="stat-panel text-center">
+<?php
+$result2 ="SELECT count(*) FROM payment where status = 'Accepted' ";
+$stmt2 = $mysqli->prepare($result2);
+$stmt2->execute();
+$stmt2->bind_result($count2);
+$stmt2->fetch();
+$stmt2->close();
+?>
+													<div class="stat-panel-number h1 "><?php echo $count2;?></div>
+													<div class="stat-panel-title text-uppercase">Total Accepted</div>
+												</div>
+											</div>
+											<a href="accepted.php" class="block-anchor panel-footer text-center">See All &nbsp; <i class="fa fa-arrow-right"></i></a>
+										</div>
+									</div>
+
 								</div>
 							</div>
 						</div>
@@ -158,7 +198,7 @@ $stmt2->close();
 </body>
 
 <div class="foot"><footer>
-<p> Brought To You By <a href="https://code-projects.org/">Code-Projects</p>
+<p> Brought To You By <a href="https://udom.ac.tz/">BSc SE</p>
 </footer> </div>
 
 

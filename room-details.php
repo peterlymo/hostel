@@ -57,7 +57,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 									<tbody>
 <?php	
 $aid=$_SESSION['login'];
-	$ret="select * from registration where emailid=?";
+$ret="select * from registration where emailid=?";
 $stmt= $mysqli->prepare($ret) ;
 $stmt->bind_param('s',$aid);
 $stmt->execute() ;
@@ -176,20 +176,43 @@ echo $dr*$fpm;
 </td>
 </tr>
 
-<tr>
-<td colspan="4"><h4>Booking Status : </h4></td>
-<td colspan="2"><button type="button" class="btn btn-danger"> Booking is currently Pending         </button></td>
-</tr>
-
-<tr>
-
-</tr>
-
-
-
 <?php
 //$cnt=$cnt+1;
 } ?>
+
+<tr>
+<td colspan="4"><h4>Booking Status : </h4></td>
+<td colspan="2"><button type="button" class="btn">								<?php	
+$aid=$_SESSION['login'];
+$ret="select status from payment where emailid=?";
+$stmt= $mysqli->prepare($ret) ;
+$stmt->bind_param('s',$aid);
+$stmt->execute() ;
+$res=$stmt->get_result();
+$cnt=1;
+while($row=$res->fetch_object())
+	  {
+	  	?>
+
+<span style='color:green'><h4><?php if($row->status=='')
+{
+	echo "<span style='color:#FF5733 '><h4> Pending</h4></span>";
+}
+else
+{
+	echo "<span style='color:green '><h4> sucess</h4></span>";
+}
+?></h4></span>
+
+<?php } ?>      </button></td>
+</tr>
+
+<tr>
+
+</tr>
+
+
+
 </tbody>
 </table>
 </div>

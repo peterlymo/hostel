@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2021 at 03:07 AM
+-- Generation Time: May 29, 2021 at 09:46 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -88,6 +88,32 @@ INSERT INTO `courses` (`id`, `course_code`, `course_sn`, `course_fn`, `posting_d
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `payNo` int(11) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `lastName` varchar(255) NOT NULL,
+  `emailid` varchar(255) NOT NULL,
+  `refNo` varchar(255) NOT NULL,
+  `room_no` varchar(255) NOT NULL,
+  `cost` int(11) NOT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `pay_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payNo`, `firstName`, `lastName`, `emailid`, `refNo`, `room_no`, `cost`, `status`, `pay_date`) VALUES
+(8, 'Hassan', 'Mussa', 'hajumh12@gmail.com', '7698165878', '1337', 90000, 'Accepted', '2021-05-29 00:00:15'),
+(11, 'JUMA', 'OMARY', 'ally@gmail.com', '1373015234', '899', 90000, NULL, '2021-05-29 19:42:23');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `registration`
 --
 
@@ -128,14 +154,13 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`id`, `roomno`, `seater`, `feespm`, `foodstatus`, `stayfrom`, `duration`, `course`, `regno`, `firstName`, `middleName`, `lastName`, `gender`, `contactno`, `emailid`, `egycontactno`, `guardianName`, `guardianRelation`, `guardianContactno`, `corresAddress`, `corresCIty`, `corresState`, `corresPincode`, `pmntAddress`, `pmntCity`, `pmnatetState`, `pmntPincode`, `postingDate`, `updationDate`) VALUES
-(6, 100, 5, 8000, 0, '2016-04-22', 5, 'Bachelor  of Technology', 10806121, 'code', '', 'projects', 'male', 8285703354, 'code.lpu1@gmail.com', 0, 'XYZ', 'Mother', 8285703354, 'H n0 18/1 Bihari Puram Phase-1 Melrose Bye Pass', 'Aligarh', 'EPE', 202001, 'H n0 18/1 Bihari Puram Phase-1 Melrose Bye Pass', 'Aligarh', 'EPE', 202001, '2016-04-16 08:24:09', ''),
-(7, 100, 5, 8000, 1, '2016-06-17', 4, 'Bachelor of Engineering', 108061211, 'code', 'test', 'projects', 'male', 8467067344, 'test@gmail.com', 8285703354, 'test', 'test', 9999857868, 'H no- 18/1 Bihari puram phase-1 melrose bye pass', 'Aligarh', 'EPE', 202001, 'H no- 18/1 Bihari puram phase-1 melrose bye pass', 'Aligarh', 'EPE', 202001, '2016-06-23 11:54:35', ''),
 (8, 112, 3, 4000, 0, '2016-06-27', 5, 'Bachelor  of Science', 102355, 'Harry', 'projects', 'Singh', 'male', 6786786786, 'Harry@gmail.com', 789632587, 'demo', 'demo', 1234567890, 'New Delhi', 'Delhi', 'Delhi (NCT)', 110001, 'New Delhi', 'Delhi', 'Delhi (NCT)', 110001, '2016-06-26 16:31:08', ''),
-(9, 132, 5, 2000, 1, '2016-06-28', 6, 'Bachelor of Engineering', 586952, 'Benjamin', '', 'projects', 'male', 8596185625, 'Benjamin@gmail.com', 8285703354, 'demo', 'demo', 8285703354, 'H no- 18/1 Bihari puram phase-1 melrose bye pass', 'Aligarh', 'EPE', 202001, 'H no- 18/1 Bihari puram phase-1 melrose bye pass', 'Aligarh', 'EPE', 202001, '2016-06-26 16:40:07', ''),
-(10, 132, 5, 2000, 0, '2021-05-13', 12, 'Bachelor of Engineering', 0, 'Peter', 'G', 'Lymo', 'male', 774447441, 'robynextdoor@gmail.com', 112, 'lymo', 'dad0', 719700536, 'dodoma', 'dodoma', 'Sikkim', 1234, 'dodoma', 'dodoma', 'Sikkim', 1234, '2021-05-25 22:49:36', ''),
-(11, 132, 5, 2000, 0, '2021-05-22', 4, 'Bachelor Of Computer Application', 0, 'Peter', 'G', 'Lymo', 'male', 8467067344, 'robynextdoor@gmail.com', 112, 'lymo', 'dad0', 719700536, 'dodoma', 'dodoma', 'Sikkim', 1234, 'dodoma', 'dodoma', 'Sikkim', 1234, '2021-05-25 23:39:35', ''),
 (12, 1337, 5, 90000, 0, '2021-05-21', 8, 'Bachelor Of Computer Application', 0, 'Peter', 'G', 'Lymo', 'female', 774447679, 'robynextdoor@gmail.com', 112, 'lymo', 'mom', 719700536, 'dodoma', 'dodoma', 'Sikkim', 1234, 'dodoma', 'dodoma', 'Sikkim', 1234, '2021-05-25 23:44:34', ''),
-(13, 1337, 5, 90000, 0, '2021-05-13', 3, 'Master of Computer Application', 0, 'Peter', 'G', 'Lymo', 'others', 774447679, 'robynextdoor@gmail.com', 112, 'lymo', 'mom', 719700536, 'dodoma', 'dodoma', 'Sikkim', 1234, 'dodoma', 'dodoma', 'Sikkim', 1234, '2021-05-25 23:55:46', '');
+(13, 1337, 5, 90000, 0, '2021-05-13', 3, 'Master of Computer Application', 0, 'Peter', 'G', 'Lymo', 'others', 774447679, 'robynextdoor@gmail.com', 112, 'lymo', 'mom', 719700536, 'dodoma', 'dodoma', 'Sikkim', 1234, 'dodoma', 'dodoma', 'Sikkim', 1234, '2021-05-25 23:55:46', ''),
+(14, 1337, 5, 90000, 0, '2021-05-22', 5, 'Bachelor Of commerce ', 0, 'Hassan', 'Hajum', 'Mussa', 'male', 774447441, 'hajumh12@gmail.com', 112, 'lymo', 'dad0', 719700536, 'dodoma', 'dodoma', 'Arunachal Pradesh', 1234, 'dodoma', 'dodoma', 'Arunachal Pradesh', 1234, '2021-05-26 10:04:05', ''),
+(15, 899, 2, 90000, 0, '2021-05-18', 4, 'Bachelor  of Technology', 0, 'Peter', 'G', 'Lymo', 'female', 774447679, 'tet@gmail.com', 112, 'lymo', 'mom', 719700536, 'dodoma', 'dodoma', 'Sikkim', 1234, 'dodoma', 'dodoma', 'Sikkim', 1234, '2021-05-29 01:42:38', ''),
+(16, 899, 2, 90000, 0, '2021-05-12', 0, 'Bachelor Of commerce ', 0, 'Peter', 'G', 'Lymo', 'others', 8467067344, 'robynextdoor@gmail.com', 112, 'Lymo', 'mom', 719700536, 'dodoma', 'dodoma', 'Sikkim', 1234, 'dodoma', 'dodoma', '0', 1234, '2021-05-29 01:50:25', ''),
+(17, 899, 2, 90000, 0, '0000-00-00', 0, 'Bachelor Of Computer Application', 0, 'JUMA', 'ALLY', 'OMARY', 'male', 774447679, 'ally@gmail.com', 112, 'lymo', 'dad0', 719700536, 'dodoma', 'dodoma', 'Sikkim', 1234, 'dodoma', 'dodoma', 'Mbeya', 1234, '2021-05-29 19:38:58', '');
 
 -- --------------------------------------------------------
 
@@ -157,8 +182,9 @@ CREATE TABLE `rooms` (
 
 INSERT INTO `rooms` (`id`, `seater`, `room_no`, `fees`, `posting_date`) VALUES
 (5, 5, 132, 2000, '2016-04-12 01:31:15'),
-(7, 4, 12, 750, '2021-05-03 13:16:32'),
-(8, 5, 1337, 90000, '2021-05-25 23:42:27');
+(7, 4, 12, 80000, '2021-05-03 13:16:32'),
+(8, 5, 1337, 90000, '2021-05-25 23:42:27'),
+(10, 2, 899, 90000, '2021-05-29 01:41:02');
 
 -- --------------------------------------------------------
 
@@ -176,31 +202,26 @@ CREATE TABLE `states` (
 --
 
 INSERT INTO `states` (`id`, `State`) VALUES
-(1, 'Andaman and Nicobar Island (UT)'),
-(2, 'Andhra Pradesh'),
-(3, 'Arunachal Pradesh'),
-(4, 'Assam'),
-(5, 'Bihar'),
-(6, 'Chandigarh (UT)'),
-(7, 'Chhattisgarh'),
-(8, 'Dadra and Nagar Haveli (UT)'),
-(9, 'Daman and Diu (UT)'),
-(10, 'Delhi (NCT)'),
-(11, 'Goa'),
-(12, 'Gujarat'),
-(13, 'Haryana'),
-(14, 'Himachal Pradesh'),
-(15, 'Jammu and Kashmir'),
-(16, 'Jharkhand'),
-(17, 'Karnataka'),
-(18, 'Kerala'),
-(19, 'Lakshadweep (UT)'),
-(20, 'Madhya Pradesh'),
-(21, 'Maharashtra'),
-(22, 'Manipur'),
-(23, 'Meghalaya'),
-(24, 'Mizoram'),
-(25, 'Nagaland'),
+(1, 'Morogoro'),
+(2, 'Tanga'),
+(3, 'Arusha'),
+(4, 'Pwani'),
+(5, 'Mwanza'),
+(6, 'Kigoma'),
+(7, 'Zanzibar'),
+(8, 'Mbeya'),
+(9, 'Dodoma'),
+(10, 'Lindi'),
+(11, 'Mtwara'),
+(12, 'Shinyanga'),
+(13, 'Iringa'),
+(14, 'Mara'),
+(15, 'Singida'),
+(16, 'Kilimanjaro'),
+(17, 'Dar es Salaam'),
+(18, 'Rukwa'),
+(19, 'Ruvuma'),
+(20, 'Tabora'),
 (26, 'Odisha'),
 (27, 'Puducherry (UT)'),
 (28, 'Punjab'),
@@ -263,7 +284,35 @@ INSERT INTO `userlog` (`id`, `userId`, `userEmail`, `userIp`, `city`, `country`,
 (28, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 00:17:33'),
 (29, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 00:43:11'),
 (30, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 00:44:55'),
-(31, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 00:53:08');
+(31, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 00:53:08'),
+(32, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 01:08:00'),
+(33, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 07:20:08'),
+(34, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 08:48:13'),
+(35, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 10:02:43'),
+(36, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 13:32:06'),
+(37, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 14:13:46'),
+(38, 26, 'lymo@gmail.com', 0x3a3a31, '', '', '2021-05-26 14:57:39'),
+(39, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 16:33:58'),
+(40, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 16:41:30'),
+(41, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 21:22:38'),
+(42, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 21:32:22'),
+(43, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 22:52:17'),
+(44, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-26 23:31:56'),
+(45, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-27 00:09:07'),
+(46, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-27 01:12:29'),
+(47, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-27 13:35:13'),
+(48, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-28 20:55:11'),
+(49, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-29 00:04:54'),
+(50, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-29 01:33:10'),
+(51, 28, 'tet@gmail.com', 0x3a3a31, '', '', '2021-05-29 01:35:45'),
+(52, 28, 'tet@gmail.com', 0x3a3a31, '', '', '2021-05-29 01:41:27'),
+(53, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-29 01:44:13'),
+(54, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-29 16:42:35'),
+(55, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-29 17:44:03'),
+(56, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-29 18:13:49'),
+(57, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-29 18:42:24'),
+(58, 10, 'hajumh12@gmail.com', 0x3a3a31, '', '', '2021-05-29 19:25:51'),
+(59, 30, 'ally@gmail.com', 0x3a3a31, '', '', '2021-05-29 19:37:59');
 
 -- --------------------------------------------------------
 
@@ -292,12 +341,15 @@ CREATE TABLE `userregistration` (
 --
 
 INSERT INTO `userregistration` (`id`, `regNo`, `firstName`, `middleName`, `lastName`, `gender`, `contactNo`, `email`, `password`, `regDate`, `updationDate`, `passUdateDate`, `role`) VALUES
-(10, 'T/UDOM/2019/00572', 'Hassan', 'Hajum', 'Mussa', 'male', 774447441, 'hajumh12@gmail.com', '123', '2016-06-22 04:21:33', '03-05-2021 06:41:28', '22-06-2016 05:16:49', 'user'),
+(10, 'T/UDOM/2019/00572', 'Hassan', 'Hajum', 'Mussa', 'male', 774447441, 'hajumh12@gmail.com', '123', '2016-06-22 04:21:33', '26-05-2021 08:06:23', '29-05-2021 10:12:47', 'user'),
 (19, '102355', 'Harry', 'projects', 'Singh', 'male', 6786786786, 'Harry@gmail.com', '6786786786', '2016-06-26 16:33:36', '', '', 'user'),
 (20, '586952', 'Benjamin', '', 'projects', 'male', 8596185625, 'Benjamin@gmail.com', '8596185625', '2016-06-26 16:40:07', '', '', 'user'),
 (21, 'T/UDOM/2019/00572', 'Peter', 'G', 'Lymo', 'male', 774447441, 'robynextdoor@gmail.com', '0774447441', '2021-05-25 22:49:36', '', '', 'user'),
-(23, 'T/UDOM/2019/00560', 'Peter', 'G', 'Lymo', 'others', 774447679, '0', '0774447679', '2021-05-25 23:55:46', '', '', 'user'),
-(26, 'T/UDOM/2019/00560', 'Peter', 'G', 'Lymo', 'male', 774447679, 'lymo@gmail.com', '123', '2021-05-26 00:12:04', '', '', 'admin');
+(26, 'T/UDOM/2019/00560', 'Peter', 'G', 'Lymo', 'male', 774447679, 'lymo@gmail.com', '123', '2021-05-26 00:12:04', '', '', 'admin'),
+(27, 't123', 'juma', 'ally', 'matimbwa', 'male', 774447679, 'robynextdoor@gmail.com', '123', '2021-05-28 16:46:00', '', '', 'admin'),
+(28, 'T/UDOM/2019/00560', 'Peter', 'G', 'Lymo', 'female', 774447679, 'tet@gmail.com', '123', '2021-05-29 01:35:13', '', '', 'user'),
+(29, 't123', 'Peter', 'G', 'Lymo', 'others', 8467067344, 'robynextdoor@gmail.com', '8467067344', '2021-05-29 01:50:25', '', '', 'user'),
+(30, 'A12', 'JUMA', 'ALLY', 'OMARY', 'male', 774447679, 'ally@gmail.com', '123', '2021-05-29 19:37:49', '', '', 'user');
 
 --
 -- Indexes for dumped tables
@@ -314,6 +366,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`payNo`);
 
 --
 -- Indexes for table `registration`
@@ -362,16 +420,22 @@ ALTER TABLE `courses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `payNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `states`
@@ -383,13 +447,13 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `userregistration`
 --
 ALTER TABLE `userregistration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

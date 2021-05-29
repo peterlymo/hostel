@@ -72,7 +72,23 @@ check_login();
 										</div>
 									</div>
 
+									<!-- <div class="col-md-3">
+										<div class="panel panel-default">
+											<div class="panel-body bk-primary text-light">
+												<div class="stat-panel text-center">
+
+
+
+													<div class="stat-panel-number h1 ">STATUS</div>
+
+												</div>
+											</div>
+											<a href="my-profile.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+										</div>
+									</div> -->
+
 								</div>
+
 							</div>
 						</div>
 
@@ -125,7 +141,7 @@ check_login();
 </body>
 
 <div class="foot"><footer>
-<p> Brought To You By <a href="https://code-projects.org/">Code-Projects</p>
+<p> Brought To You By <a href="https://udom.ac.tz">BSc -SE 2021</p>
 </footer> </div>
 
 

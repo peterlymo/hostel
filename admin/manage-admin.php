@@ -7,7 +7,7 @@ check_login();
 if(isset($_GET['del']))
 {
 	$id=intval($_GET['del']);
-	$adn="delete from registration where id=?";
+	$adn="delete from userregistration where id=?";
 		$stmt= $mysqli->prepare($adn);
 		$stmt->bind_param('i',$id);
         $stmt->execute();
@@ -25,7 +25,7 @@ if(isset($_GET['del']))
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	<title>Manage Students</title>
+	<title>Manage Admin</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
@@ -56,40 +56,42 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 		<div class="content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-12"></br></br>
-						<h2 class="page-title">Manage Students</h2>
+					<div class="col-md-12">
+                    </br></br>
+						<h2 class="page-title">Manage Admins</h2>
 						<div class="panel panel-default">
-							<div class="panel-heading">All Students Details</div>
+							<div class="panel-heading">All Admins Details</div>
 							<div class="panel-body">
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
-											<th>Sno.</th>
+										<tr>
+											<th>ID.</th>
 											<th>Student Name</th>
-											<th>Reg no</th>
+											<th>Gender</th>
 											<th>Contact no </th>
-											<th>room no  </th>
-											<th>Seater </th>
-											<th>Staying From </th>
+											<th>Email </th>
+											<th>Reg Date </th>
+											<th>Update Pass Date </th>
 											<th>Action</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Sno.</th>
+											<th>ID.</th>
 											<th>Student Name</th>
-											<th>Reg no</th>
+											<th>Gender</th>
 											<th>Contact no </th>
-											<th>Room no  </th>
-											<th>Seater </th>
-											<th>Staying From </th>
+											<th>Email </th>
+											<th>Reg Date </th>
+											<th>Update Pass Date </th>
 											<th>Action</th>
 										</tr>
 									</tfoot>
 									<tbody>
 <?php	
 $aid=$_SESSION['login'];
-$ret="select * from registration";
+$ret="select * from userregistration";
 $stmt= $mysqli->prepare($ret) ;
 //$stmt->bind_param('i',$aid);
 $stmt->execute() ;//ok
@@ -99,15 +101,15 @@ while($row=$res->fetch_object())
 	  {
 	  	?>
 <tr><td><?php echo $cnt;;?></td>
-<td><?php echo $row->firstName;?><?php echo $row->middleName;?><?php echo $row->lastName;?></td>
-<td><?php echo $row->regno;?></td>
-<td><?php echo $row->contactno;?></td>
-<td><?php echo $row->roomno;?></td>
-<td><?php echo $row->seater;?></td>
-<td><?php echo $row->stayfrom;?></td>
+<td><?php echo $row->firstName;?>&nbsp;<?php echo $row->middleName;?>&nbsp;<?php echo $row->lastName;?></td>
+<td><?php echo $row->gender;?></td>
+<td><?php echo $row->contactNo;?></td>
+<td><?php echo $row->email;?></td>
+<td><?php echo $row->regDate;?></td>
+<td><?php echo $row->passUdateDate;?></td>
 <td>
 <a href="javascript:void(0);"  onClick="popUpWindow('http://localhost/hostel/admin/full-profile.php?id=<?php echo $row->emailid;?>');" title="View Full Details"><i class="fa fa-desktop"></i></a>&nbsp;&nbsp;
-<a href="manage-students.php?del=<?php echo $row->id;?>" title="Delete Record" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
+<a href="manage-admin.php?del=<?php echo $row->id;?>" title="Delete Record" onclick="return confirm("Do you want to delete");"><i class="fa fa-close"></i></a></td>
 										</tr>
 									<?php
 $cnt=$cnt+1;

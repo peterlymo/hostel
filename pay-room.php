@@ -5,34 +5,9 @@ date_default_timezone_set('Asia/Kolkata');
 include('includes/checklogin.php');
 check_login();
 $ai=$_SESSION['id'];
-// code for change password
-if(isset($_POST['changepwd']))
-{
-  $op=$_POST['oldpassword'];
-  $np=$_POST['newpassword'];
-$udate=date('d-m-Y h:i:s', time());;
-	$sql="SELECT password FROM userregistration where password=?";
-	$chngpwd = $mysqli->prepare($sql);
-	$chngpwd->bind_param('s',$op);
-	$chngpwd->execute();
-	$chngpwd->store_result(); 
-    $row_cnt=$chngpwd->num_rows;;
-	if($row_cnt>0)
-	{
-		$con="update userregistration set password=?,passUdateDate=?  where id=?";
-$chngpwd1 = $mysqli->prepare($con);
-$chngpwd1->bind_param('ssi',$np,$udate,$ai);
-  $chngpwd1->execute();
-		$_SESSION['msg']="Password Changed Successfully !!";
-	}
-	else
-	{
-		$_SESSION['msg']="Old Password not match !!";
-	}	
-	
-
-}
 ?>
+
+
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -53,19 +28,8 @@ $chngpwd1->bind_param('ssi',$np,$udate,$ai);
 	<link rel="stylesheet" href="css/style.css">
 <script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
 <script type="text/javascript" src="js/validation.min.js"></script>
-<script type="text/javascript">
-function valid()
-{
 
-if(document.changepwd.newpassword.value!= document.changepwd.cpassword.value)
-{
-alert("Password and Re-Type Password Field do not match  !!");
-document.changepwd.cpassword.focus();
-return false;
-}
-return true;
-}
-</script>
+
 
 </head>
 <body>
@@ -86,19 +50,18 @@ return true;
 								<div class="panel panel-default">
 									<div class="panel-heading">
 
-
-
                                                     <form method="post">
-  <div class="form-group">
+ 						 <div class="form-group">
   <input type="submit" name="code" Value="Genarate control code" class="btn btn-primary">
 </form>
 
 
-                                                    <?php
+
+<!-- randomly -->
+<?php
 
 if(isset($_POST['code'])){
 
-//~ srand(9);x
 function gen(){
     $len = 10 ;
     $x = '';
@@ -117,21 +80,32 @@ function gen(){
 
 ?>
 
+<!--ref submit-->
+<?php
+if(isset($_POST['submit']))
+{
+$fname=$_POST['firstName'];
+$lname=$_POST['lastName'];
+$email=$_POST['email'];
+$ref=$_POST['pincode'];
+$room=$_POST['roomno'];
+$cost=$_POST['cost'];
+$paydate=date('d-m-Y h:i:s', time());;
+$query="insert into  payment(firstName,lastName,emailid,refNo,room_no,cost) values(?,?,?,?,?,?)";
+$stmt = $mysqli->prepare($query);
+$rc=$stmt->bind_param('ssssss',$fname,$lname,$email,$ref,$room,$cost);
+$stmt->execute();
+echo "<span style='color:green'><h2> payment detail sucessfull sent</h2>.</span>";
+}
+?>
 
-
-
-
-							</div>
-
-
-
-                            
+							</div>                           
 							</div>
                             <table id="zctb" class="table table-bordered " cellspacing="0" width="100%">
                             <tbody>
 <?php	
 $aid=$_SESSION['login'];
-	$ret="select * from registration where emailid=?";
+$ret="select * from registration where emailid=?";
 $stmt= $mysqli->prepare($ret) ;
 $stmt->bind_param('s',$aid);
 $stmt->execute() ;
@@ -145,8 +119,6 @@ while($row=$res->fetch_object())
 <td colspan="4"><h4>Room Realted Info</h4></td>
 </tr>
 
-
-
 <tr>
 <td><b>Room no :</b></td>
 <td><?php echo $row->roomno;?></td>
@@ -154,6 +126,7 @@ while($row=$res->fetch_object())
 <td><?php echo $row->seater;?></td>
 <td><b>Fees PM :</b></td>
 <td><?php echo $fpm=$row->feespm;?></td>
+
 </tr>
 
 <tr>
@@ -161,29 +134,36 @@ while($row=$res->fetch_object())
 </tr>
 
 
-<?php
-
-} ?>
 </tbody>	
 
 
 </table>
 <div class="form-group"></br>
 <label class="col-sm-2 control-label">Enter reference Number : </label>
-<div class="col-sm-8">
+<div class="col-sm-8">	<form method="post">
 <input type="text" name="pincode" id="pincode" placeholder="enter reference number here"  class="form-control" required="required">
 </br>
 
 <div class="col-sm-6 col-sm-offset-4">	
-													<input type="submit" name="changepwd" Value="Submit Now" class="btn btn-primary">
+													
+													
+ 						 <div class="form-group">
+						  <input type="text"  name="firstName" value="<?php echo $row->firstName;?>"hidden />
+<input type="text"  name="lastName" value="<?php echo $row->lastName;?>" hidden/>
+<input type="text"  name="email" value="<?php echo $row->emailid;?>" hidden/>
+<input type="text"  name="roomno" value="<?php echo $row->roomno;?>" hidden />
+<input type="text"  name="cost" value="<?php echo $row->feespm; ?>" hidden/>
+						  <input type="submit" name="submit" Value="Submit Now" class="btn btn-primary">
+</form>
                                                     </br>    </br> 
 											</div>
                                         
 </div>
 </div>	
+        
+<?php
 
-
-                                       
+} ?>                              
 
 							</div>
 						</div>
@@ -206,20 +186,7 @@ while($row=$res->fetch_object())
 	<script src="js/main.js"></script>
 
 <script>
-function checkpass() {
-$("#loaderIcon").show();
-jQuery.ajax({
-url: "check_availability.php",
-data:'oldpassword='+$("#oldpassword").val(),
-type: "POST",
-success:function(data){
-$("#password-availability-status").html(data);
-$("#loaderIcon").hide();
-},
-error:function (){}
-});
-}
-</script>
+
 </body>
 
 </html>
